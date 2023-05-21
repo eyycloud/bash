@@ -383,6 +383,12 @@ red "卸载请 运行 wget https://raw.githubusercontent.com/FunctionClub/Fail2b
 function docker(){
 bash <(curl -L -s https://raw.githubusercontent.com/eyycloud/bash/main/docker.sh)
 }
+function dockerui(){
+docker pull joinsunsoft/docker.ui:latest
+docker run --rm --name=docker.ui -v /var/run/docker.sock:/var/run/docker.sock -p 8001:8999 joinsunsoft/docker.ui
+blue "http://ip:8999/"
+red "Username: ginghan Password: 123456"
+}
 #主菜单
 function start_menu(){
     clear
@@ -424,6 +430,7 @@ function start_menu(){
     green " 33. Aria2 最强安装与管理脚本"
     yellow " --------------------------------------------------"
     blue " 41. Docker安装脚本"
+    blue " 42. Docker.ui中文面板"
     yellow " --------------------------------------------------"
     green " 00. 宝塔面板综合安装脚本"
     green " =================================================="
@@ -523,6 +530,9 @@ function start_menu(){
 	;;
         41 )
            docker
+	;;
+        42 )
+           dockerui
 	;;
 	00 )
             btbox
