@@ -379,14 +379,15 @@ red "卸载请 运行 wget https://raw.githubusercontent.com/FunctionClub/Fail2b
 wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh && bash fail2ban.sh 2>&1 | tee fail2ban.log
 red "卸载请 运行 wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/uninstall.sh && bash uninstall.sh"
 }
-
+#Docker 安装脚本
+function docker(){
+bash <(curl -L -s https://raw.githubusercontent.com/eyycloud/bash/main/docker.sh)
+}
 #主菜单
 function start_menu(){
     clear
     red " 1 综合工具箱 1" 
-    green " FROM: 1 "
-    green " HELP: 1 "
-    green " USE:  1 "
+    green " FROM: 1 " blue " HELP: 1 " yellow " USE:  1 "
     yellow " =================================================="
     blue " 1. IPV.SH ipv4/6优先级调整一键脚本·下载" 
     blue " 2. IPT.SH iptable一键脚本"
@@ -421,6 +422,8 @@ function start_menu(){
     green " 31. MTP&TLS 一键脚本"
     green " 32. Rclone官方一键安装脚本"
     green " 33. Aria2 最强安装与管理脚本"
+    yellow " --------------------------------------------------"
+    blue " 41. Docker安装脚本"
     yellow " --------------------------------------------------"
     green " 00. 宝塔面板综合安装脚本"
     green " =================================================="
@@ -517,6 +520,9 @@ function start_menu(){
 	;;
         33 )
            aria
+	;;
+        41 )
+           docker
 	;;
 	00 )
             btbox
