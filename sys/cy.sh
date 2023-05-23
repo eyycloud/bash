@@ -390,25 +390,10 @@ blue "http://ip:8999/"
 red "Username: ginghan Password: 123456"
 }
 function dockerdoc(){
-echo -n "中国大陆请输入c > " china
-if '$user_name' = 'c'; then
-  docker pull registry.cn-shenzhen.aliyuncs.com/star7th/showdoc
-  docker tag registry.cn-shenzhen.aliyuncs.com/star7th/showdoc:latest star7th/showdoc:latest 
-else
-  docker pull star7th/showdoc:latest 
-fi
-
-#新建存放showdoc数据的目录
-mkdir -p /showdoc_data/html
-chmod  -R 777 /showdoc_data
-# 如果你是想把数据挂载到其他目录，比如说/data1，那么，可以在/data1目录下新建一个showdoc_data/目录，
-# 然后在根目录的新建一个软链接/showdoc_data到/data1/showdoc_data
-# 这样既能保持跟官方教程推荐的路径一致，又能达到自定义存储的目的.
-
-#启动showdoc容器
-docker run -d --name showdoc --user=root --privileged=true -p 4999:80 \
--v /showdoc_data/html:/var/www/html/ star7th/showdoc
+bash <(curl -L -s https://raw.githubusercontent.com/eyycloud/bash/main/sys/dockerdoc.sh)
 }
+
+
 #主菜单
 function start_menu(){
     clear
